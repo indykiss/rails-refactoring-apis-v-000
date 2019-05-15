@@ -15,7 +15,7 @@ class GithubRepo
   end
 
   def authenticate!(client_id, client_secret, code)
-   response = Faraday.post "https://github.com/login/oauth/access_token", {client_id: ENV["d39518d29d8d39a37017"], client_secret: ENV["02dbaf073d5a7a127693bdc3c833ca58833ff390"],code: code}, {'Accept' => 'application/json'}
+   response = Faraday.post "https://github.com/login/oauth/access_token", {client_id: ENV["num"], client_secret: ENV["num"],code: code}, {'Accept' => 'application/json'}
    access_hash = JSON.parse(response.body)
 
    user_response = Faraday.get "https://api.github.com/user", {}, {'Authorization' => "token #{session[:token]}", 'Accept' => 'application/json'}
