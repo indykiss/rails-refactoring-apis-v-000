@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-
+# need to change this?
     def logged_in?
       !!session[:token]
     end
