@@ -8,8 +8,10 @@ class GithubRepo
   end
 
   def authenticate_user
-    redirect_to "https://github.com/login/oauth/authorize?client_id=#{ENV['d39518d29d8d39a37017']}&scope=repo" if !logged_in?
-  end
+    client_id = ENV['GITHUB_CLIENT_ID']
+    redirect_uri = CGI.escape("http://localhost:3000/auth")
+    github_url = "https://github.com/login/oauth/authorize?client_id=#{client_id}"
+    redirect_to github_url unless logged_in?  end
 
   def authenticate!(client_id, client_secret, code)
    response = Faraday.post "https://github.com/login/oauth/access_token", {client_id: ENV["d39518d29d8d39a37017"], client_secret: ENV["02dbaf073d5a7a127693bdc3c833ca58833ff390"],code: code}, {'Accept' => 'application/json'}
