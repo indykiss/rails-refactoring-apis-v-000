@@ -8,7 +8,7 @@ class GithubRepo
   end
 
   def authenticate_user
-    client_id = ENV['#']
+    client_id = ENV['num']
     redirect_uri = CGI.escape("http://localhost:3000/auth")
     github_url = "https://github.com/login/oauth/authorize?client_id=#{num"
     redirect_to github_url unless logged_in?
